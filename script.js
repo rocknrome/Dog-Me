@@ -1,14 +1,22 @@
+// cached UI Variables
 const button = document.querySelector('button')
 const breedInput = document.querySelector('input')
 const imageDiv = document.querySelector('div')
 
+
+//Function
 const getBreeds = async () => {
-    const dogbreeds = await axios.get('https://dog.ceo/api/breeds/list/all')
-    console.log(dogbreeds.data.message)
-  }
+    try {
+      const dogBreeds = await axios.get('https://dog.ceo/api/breeds/list/all');
+      console.log(dogBreeds.data.message);
+    } catch (error) {
+      console.error('Error fetching dog breeds:', error);
+    }
+  };
 
   getBreeds()
 
+//Event listener
 button.addEventListener('click', async () => {
     let breed = breedInput.value
     let response = await axios.get(
